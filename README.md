@@ -15,10 +15,10 @@ I would like to customize my IKEA coffee table with RGB leds. I already saw many
 * [4x] 50 RGB led string: "WS2811 DC5V full color 50pcs a string led pixel module" (4 x $13.00 = $52.00)
 * Led power supply: "5V 12A 60W Switching Power Supply 120 / 240V AC" (~ $8.00)
 * PMMA sheet 90 x 55 cm (Poly methyl methacrylate: is a transparent thermoplastic) (~ $50.00)
-* Ikea table 'LACK model': 90 x 55 cm (~$35.00)
+* Ikea table 'LACK model': 90 x 55 cm (~$20.00)
 * Linear potentiometer 10kΩ (~ $0.90)
 * [2x] Press button 28.5mm (~ $0.50)
-* Some screws, batten woods, cardboard
+* Some screws, batten woods, cardboard, ...
 
 ### Hardware
 
@@ -34,7 +34,7 @@ Although the Arduino board is capable power several leds, when you aim to bright
 TODO
 
 #####Ikea table 'LACK model'
-TODO
+The LACK coffee table from IKEA is cheap but correct quality (http://www.ikea.com/us/en/catalog/products/00095036/#/40104294). You can find many tutorials talking about 'How hack IKEA coffee table'. I follow one of thoses tutorials to add an internal storage: http://www.ikeahackers.net/2012/11/remote-storage-lack-table.html.
 
 ### Software
 
