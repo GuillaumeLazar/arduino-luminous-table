@@ -73,11 +73,12 @@ void AbstractTableBehavior::readPotentiometerValue()
 CRGB AbstractTableBehavior::correctColor(int cols, CRGB color)
 {
   CRGB colorCorrected;
-
+  
+  
   if (cols < 10){
     colorCorrected.r = 0.8f * color.r;
-    colorCorrected.g = 1.0f * color.g;
-    colorCorrected.b = 0.9f * color.b;
+    colorCorrected.g = 0.8f * color.g;
+    colorCorrected.b = 0.8f * color.b;
   }
   else{
     colorCorrected.r = 0.7f * color.r;

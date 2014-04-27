@@ -47,19 +47,23 @@ void readButtonAValue()
   
   if (val != buttonAValue){
     buttonAValue = val;
-    serialPrintf("button A = %d\n", buttonAValue);
+    //serialPrintf("button A = %d\n", buttonAValue);
 
     if (buttonAValue == HIGH){
-      tone(SPEAKER_PIN, NOTE_C5);
+      int noteDuration = 200;
+      tone(SPEAKER_PIN, NOTE_C5, noteDuration);
+      delay(noteDuration);
+      noTone(SPEAKER_PIN);
       
     }else{
-      noTone(SPEAKER_PIN);
+      
+      
       tableMode ++;
       tableMode = tableMode % BEHAVIOR_COUNT;
 
       arrayBehavior[tableMode]->doBlack();
        
-      serialPrintf("tableMode = %d\n", tableMode);
+      //serialPrintf("tableMode = %d\n", tableMode);
     }
   }
 }
@@ -70,7 +74,7 @@ void setup()
   delay(2000);
 
   Serial.begin(9600);
-  randomSeed(analogRead(5));
+  randomSeed(analogRead(2));
 
   //global init
   arrayBehavior[0] = &tableBehaviorRandomDot;

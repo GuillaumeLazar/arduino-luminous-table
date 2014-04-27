@@ -41,7 +41,8 @@ void TableBehaviorRandomDot::readButtonBValue()
 
       currentColor = arrayColor[random(COLOR_COUNT)];
 
-      Serial.println(dotCounter);
+      Serial.println("button B pressed\n");
+      //Serial.println(dotCounter);
       dotCounter = 0;
     }
   }
