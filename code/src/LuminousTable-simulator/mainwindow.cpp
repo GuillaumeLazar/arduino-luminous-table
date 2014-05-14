@@ -48,6 +48,12 @@ void MainWindow::readPotentiometerAndButton()
     delay(5 * 10);
 }
 
+// Simulator function : setCorrectColor()
+void MainWindow::setCorrectColor(int x, int y, CRGB currentColor)
+{
+    mDotMatrix->setColor(x, y, currentColor);
+}
+
 //---------------------------------------------------------------------------------
 // SIMULATOR SANDBOX
 //---------------------------------------------------------------------------------
@@ -77,20 +83,22 @@ void MainWindow::init()
 // Simulator function : loop()
 void MainWindow::loop()
 {
-
+    // pick up a random coordinates
     int x = random(20);
     int y = random(10);
 
-     //(*leds)[(*ledMatrix)[x][y]] = correctColor(x, currentColor);
-     mDotMatrix->setColor(x, y, currentColor);
-     dotCounter ++;
-     FastLED.show();
+    // set color and show it!
+    setCorrectColor(x, y, currentColor);
+    FastLED.show();
 
-     readPotentiometerAndButton();
+    // read any changes on Potentiometer and Button B
+    readPotentiometerAndButton();
 
-     //check auto change mode
-     if (dotCounter > 250){
-       currentColor = arrayColor[random(COLOR_COUNT)];
-       dotCounter = 0;
-     }
+    //check auto change mode
+    if (dotCounter > 250){
+        currentColor = arrayColor[random(COLOR_COUNT)];
+        dotCounter = 0;
+    }else{
+        dotCounter ++;
+    }
 }

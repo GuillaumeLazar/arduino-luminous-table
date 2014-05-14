@@ -2,6 +2,7 @@
 #define QDOTMATRIX_H
 
 #include <QWidget>
+#include <QGraphicsBlurEffect>
 
 #include "FakeHardware.h"
 
@@ -18,6 +19,7 @@ protected:
     //override
     void paintEvent(QPaintEvent * pe);
 
+    QGraphicsBlurEffect *mGraphicsEffect;
     int mRowsCount;
     int mColsCount;
     int mDotSize;

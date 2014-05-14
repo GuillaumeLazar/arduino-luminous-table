@@ -1,5 +1,6 @@
 #include "qdotmatrix.h"
-#include "QPainter"
+
+#include <QPainter>
 
 QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount) :
     QWidget(parent)
@@ -16,20 +17,17 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount) :
 
     for (int x = 0; x < mRowsCount; ++x) {
         for (int y = 0; y < mColsCount; ++y) {
-
             int value = 0;
-
-            //if (y%2 == 0){
-            //    value = x%2==0 ? 255 : 0;
-            //}else{
-            //    value = x%2!=0 ? 255 : 0;
-            //}
-
             mMatrix[x][y] = QColor::fromRgb(value, value, value);
         }
     }
 
     this->setFixedSize(rowsCount * mDotSize, colsCount * mDotSize);
+
+    //add blur effect
+    mGraphicsEffect = new QGraphicsBlurEffect();
+    mGraphicsEffect->setBlurRadius(15);
+    this->setGraphicsEffect(mGraphicsEffect);
 }
 
 
@@ -55,7 +53,10 @@ void QDotMatrix::paintEvent(QPaintEvent * pe)
             int endX = startX + mDotSize;
             int endY = startY + mDotSize;
 
-            painter.fillRect(QRect(startX, startY, endX, endY), mMatrix[x][y]);
+            QColor color = mMatrix[x][y];
+            color.setAlpha(255);
+            painter.fillRect(QRect(startX, startY, endX, endY), color);
+
         }
     }
 

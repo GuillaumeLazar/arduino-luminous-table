@@ -33,6 +33,7 @@ private:
     int random(int high);
     void delay(int milliseconds);
     void readPotentiometerAndButton();
+    void setCorrectColor(int x, int y, CRGB currentColor);
 
     Ui::MainWindow *ui;
     QDotMatrix *mDotMatrix;
