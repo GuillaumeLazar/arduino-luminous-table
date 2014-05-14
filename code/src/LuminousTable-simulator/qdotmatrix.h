@@ -10,7 +10,7 @@ class QDotMatrix : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QDotMatrix(QWidget *parent = 0, int rowsCount = 20, int colsCount = 10);
+    explicit QDotMatrix(QWidget *parent = 0, int rowsCount = 20, int colsCount = 10, QColor backgroundColor = Qt::black);
 
     void setColor(int x, int y, CRGB color);
     void setColor(int x, int y, QColor color);

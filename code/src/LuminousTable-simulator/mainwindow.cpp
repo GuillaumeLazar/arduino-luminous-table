@@ -2,6 +2,7 @@
 
 #include <QThread>
 #include <QDebug>
+#include <QColor>
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -12,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     mTimer = new QTimer(this);
-    mDotMatrix = new QDotMatrix(this, 20, 10);
+    QColor backgroundColor = QColor::fromRgb(220, 220, 220);
+    mDotMatrix = new QDotMatrix(this, 20, 10, backgroundColor);
 
     connect(mTimer, SIGNAL(timeout()), this, SLOT(loop()));
     setCentralWidget(mDotMatrix);

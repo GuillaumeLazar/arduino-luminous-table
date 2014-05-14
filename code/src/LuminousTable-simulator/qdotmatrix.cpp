@@ -2,7 +2,7 @@
 
 #include <QPainter>
 
-QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount) :
+QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor backgroundColor) :
     QWidget(parent)
 {
     mRowsCount = rowsCount;
@@ -17,8 +17,7 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount) :
 
     for (int x = 0; x < mRowsCount; ++x) {
         for (int y = 0; y < mColsCount; ++y) {
-            int value = 0;
-            mMatrix[x][y] = QColor::fromRgb(value, value, value);
+            mMatrix[x][y] = backgroundColor;
         }
     }
 
