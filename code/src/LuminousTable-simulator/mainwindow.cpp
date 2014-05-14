@@ -3,6 +3,10 @@
 #include <QThread>
 #include <QDebug>
 
+//---------------------------------------------------------------------------------
+// SIMULATOR INITIALIZATION
+//---------------------------------------------------------------------------------
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -25,23 +29,36 @@ MainWindow::~MainWindow()
 
 }
 
+// Simulator function : random()
 int MainWindow::random(int high)
 {
     int low = 0;
     return qrand() % (high - low) + low;
 }
 
+// Simulator function : delay()
 void MainWindow::delay(int milliseconds)
 {
     QThread::msleep(milliseconds);
 }
 
+// Simulator function : readPotentiometerAndButton()
+void MainWindow::readPotentiometerAndButton()
+{
+    delay(5 * 10);
+}
 
+//---------------------------------------------------------------------------------
+// SIMULATOR SANDBOX
+//---------------------------------------------------------------------------------
+
+// Simulator beahvior variables
 #define COLOR_COUNT 9
 CRGB currentColor;
 CRGB arrayColor[COLOR_COUNT];
 int dotCounter = 0;
 
+// Simulator function : init()
 void MainWindow::init()
 {
     arrayColor[0] = CRGB::DeepPink;
@@ -57,6 +74,7 @@ void MainWindow::init()
     currentColor = arrayColor[0];
 }
 
+// Simulator function : loop()
 void MainWindow::loop()
 {
 
@@ -66,17 +84,9 @@ void MainWindow::loop()
      //(*leds)[(*ledMatrix)[x][y]] = correctColor(x, currentColor);
      mDotMatrix->setColor(x, y, currentColor);
      dotCounter ++;
-
      FastLED.show();
 
-     //int i = 0;
-     //while(i < 5){
-     //  delay(10);
-     //  readPotentiometerValue();
-     //  readButtonBValue();
-     //  i++;
-     //}
-     delay(5 * 10);
+     readPotentiometerAndButton();
 
      //check auto change mode
      if (dotCounter > 250){

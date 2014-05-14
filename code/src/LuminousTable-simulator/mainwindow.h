@@ -32,6 +32,7 @@ private:
     void init();
     int random(int high);
     void delay(int milliseconds);
+    void readPotentiometerAndButton();
 
     Ui::MainWindow *ui;
     QDotMatrix *mDotMatrix;
