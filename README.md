@@ -11,7 +11,7 @@ I would like to customize my IKEA coffee table with RGB leds. I already saw many
 
 
 ### Shopping list
-* Arduino (I'm using an Arduino Uno R3, but it should work with any kind of Arduino I think...) (~ $30.00)
+* Arduino (I'm using an Arduino ProMini, but it should work with any kind of Arduino I think...) (~ $10.00)
 * [4x] 50 RGB led string: "WS2811 DC5V full color 50pcs a string led pixel module" (4 x $13.00 = $52.00)
 * Led power supply: "5V 12A 60W Switching Power Supply 120 / 240V AC" (~ $8.00)
 * PMMA sheet 90 x 55 cm (Poly methyl methacrylate: is a transparent thermoplastic) (~ $50.00)
@@ -26,7 +26,7 @@ I would like to customize my IKEA coffee table with RGB leds. I already saw many
 Arduino is a open-source single-board microcontroller. You can start to use it immediately. All you need is an USB cable, a computer with the software Arduino IDE and an Arduino. The source code present on this repository is for the microcontroller of an Arduino board.
 
 #####RGB led string
-I need what it's called 'individually addressable RGB LED'. I don't want that all leds bright the same colors. What a pain if I should link all my 200 leds on my Arduino! And it's required too many outputs on the Arduino Uno... One way is to use WS2811 led modules. All modules ared composed by a RGB led and a WS2811 control chip. All control chips are linked together by 3 wires (V+, GND and DATA). And the best part... because WS2811 use a serial protocol, you only need 1 wire (DATA) to control the individual RGB value of each led of your string! The V+ (in my case +5V) is provided by an external power supply. The GND is the ground of the Arduino and the external power supply. You can find this led string already linked by 10, 25, 50 or even 100! You can cut the led string between 2 modules, you can link many led string together.
+I need what it's called 'individually addressable RGB LED'. I don't want that all leds bright the same colors. What a pain if I should link all my 200 leds on my Arduino! And it's required too many outputs on the Arduino ProMini... One way is to use WS2811 led modules. All modules ared composed by a RGB led and a WS2811 control chip. All control chips are linked together by 3 wires (V+, GND and DATA). And the best part... because WS2811 use a serial protocol, you only need 1 wire (DATA) to control the individual RGB value of each led of your string! The V+ (in my case +5V) is provided by an external power supply. The GND is the ground of the Arduino and the external power supply. You can find this led string already linked by 10, 25, 50 or even 100! You can cut the led string between 2 modules, you can link many led string together.
 
 #####Led power supply
 Although the Arduino board is capable power several leds, when you aim to bright 200 RGB leds. You should definitively use an external power supply.
@@ -35,6 +35,10 @@ TODO
 
 #####Ikea table 'LACK model'
 The LACK coffee table from IKEA is cheap but correct quality (http://www.ikea.com/us/en/catalog/products/00095036/#/40104294). You can find many tutorials talking about 'How hack IKEA coffee table'. I follow one of thoses tutorials to add an internal storage: http://www.ikeahackers.net/2012/11/remote-storage-lack-table.html.
+
+#####Schematic
+![alt tag](https://github.com/neuronalmotion/arduino-luminous-table/raw/master/schematic/schematic_v02-breadboard-promini.png)
+Breadboard view image developed using Fritzing software.
 
 ### Software
 
