@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 
-#include <QThread>
 #include <QDebug>
 #include <QColor>
+
+#include "simulatorbehaviorrandomdot.h"
+#include "simulatorbehaviordarksky.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -11,19 +13,10 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
+    //mAbstractSimulatorBehavior = new SimulatorBehaviorRandomDot(this);
+    mAbstractSimulatorBehavior = new SimulatorBehaviorDarkSky(this);
 
-    mTimer = new QTimer(this);
-    QColor backgroundColor = QColor::fromRgb(220, 220, 220);
-    mDotMatrix = new QDotMatrix(this, 20, 10, backgroundColor);
-
-    connect(mTimer, SIGNAL(timeout()), this, SLOT(loop()));
-    setCentralWidget(mDotMatrix);
-
-    this->init();
-    FastLED.dotMatrix = mDotMatrix;
-
-    // TODO: Check Arduino main loop ~10ms?
-    mTimer->start(10);
+    setCentralWidget(mAbstractSimulatorBehavior->getDotMatrix());
 }
 
 MainWindow::~MainWindow()
@@ -31,35 +24,11 @@ MainWindow::~MainWindow()
 
 }
 
-// Simulator function : random()
-int MainWindow::random(int high)
-{
-    int low = 0;
-    return qrand() % (high - low) + low;
-}
-
-// Simulator function : delay()
-void MainWindow::delay(int milliseconds)
-{
-    QThread::msleep(milliseconds);
-}
-
-// Simulator function : readPotentiometerAndButton()
-void MainWindow::readPotentiometerAndButton()
-{
-    delay(5 * 10);
-}
-
-// Simulator function : setCorrectColor()
-void MainWindow::setCorrectColor(int x, int y, CRGB currentColor)
-{
-    mDotMatrix->setColor(x, y, currentColor);
-}
-
 //---------------------------------------------------------------------------------
 // SIMULATOR SANDBOX
 //---------------------------------------------------------------------------------
 
+/*
 // Simulator beahvior variables
 #define COLOR_COUNT 9
 CRGB currentColor;
@@ -104,3 +73,4 @@ void MainWindow::loop()
         dotCounter ++;
     }
 }
+*/

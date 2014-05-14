@@ -2,19 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTimer>
 
-#include "qdotmatrix.h"
-#include "FakeHardware.h"
-
-//TODO: put this in a separate file
-struct FakeFastLED {
-    QDotMatrix *dotMatrix;
-    void show()
-    {
-        dotMatrix->update();
-    }
-};
+#include "abstractsimulatorbehavior.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,20 +18,9 @@ public:
     ~MainWindow();
 
 private:
-    void init();
-    int random(int high);
-    void delay(int milliseconds);
-    void readPotentiometerAndButton();
-    void setCorrectColor(int x, int y, CRGB currentColor);
-
     Ui::MainWindow *ui;
-    QDotMatrix *mDotMatrix;
-    QTimer *mTimer;
-    FakeFastLED FastLED;
 
-
-private slots:
-    void loop();
+    AbstractSimulatorBehavior *mAbstractSimulatorBehavior;
 
 };
 

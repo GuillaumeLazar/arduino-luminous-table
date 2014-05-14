@@ -32,7 +32,7 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
 
 void QDotMatrix::setColor(int x, int y, CRGB color)
 {
-   mMatrix[x][y] = QColor(color.r, color.g, color.b);
+    mMatrix[x][y] = QColor(color.r, color.g, color.b);
 }
 
 void QDotMatrix::setColor(int x, int y, QColor color)

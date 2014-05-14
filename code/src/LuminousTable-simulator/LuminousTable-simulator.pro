@@ -14,11 +14,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    qdotmatrix.cpp
+    qdotmatrix.cpp \
+    abstractsimulatorbehavior.cpp \
+    simulatorbehaviorrandomdot.cpp \
+    simulatorbehaviordarksky.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
-    FakeHardware.h
+    FakeHardware.h \
+    abstractsimulatorbehavior.h \
+    simulatorbehaviorrandomdot.h \
+    simulatorbehaviordarksky.h
 
 #FORMS    +=
 
