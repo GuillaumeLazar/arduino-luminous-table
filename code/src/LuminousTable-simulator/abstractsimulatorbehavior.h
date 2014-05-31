@@ -27,6 +27,7 @@ public:
     ~AbstractSimulatorBehavior();
 
     QDotMatrix *getDotMatrix();
+    void setBrightness(int intensity);
 
 protected:
     void startLoop();

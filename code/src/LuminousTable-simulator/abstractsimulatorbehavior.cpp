@@ -5,14 +5,11 @@
 AbstractSimulatorBehavior::AbstractSimulatorBehavior(QWidget *parent)
 {
     mTimer = new QTimer(this);
-    QColor backgroundColor = QColor::fromRgb(150, 150, 150);
-    mDotMatrix = new QDotMatrix(parent, 20, 10, backgroundColor);
+    mDotMatrix = new QDotMatrix(parent, 20, 10, Qt::black);
 
     connect(mTimer, SIGNAL(timeout()), this, SLOT(loop()));
 
     FastLED.dotMatrix = mDotMatrix;
-
-
 }
 
 AbstractSimulatorBehavior::~AbstractSimulatorBehavior()
@@ -68,4 +65,9 @@ void AbstractSimulatorBehavior::paintAll(CRGB color, boolean forceRefresh)
     if (forceRefresh){
         FastLED.show();
     }
+}
+
+void AbstractSimulatorBehavior::setBrightness(int intensity)
+{
+    mDotMatrix->setIntensity(intensity);
 }

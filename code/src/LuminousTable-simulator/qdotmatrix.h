@@ -14,6 +14,7 @@ public:
 
     void setColor(int x, int y, CRGB color);
     void setColor(int x, int y, QColor color);
+    void setIntensity(int value);
 
 protected:
     //override
@@ -24,6 +25,9 @@ protected:
     int mColsCount;
     int mDotSize;
     QColor **mMatrix;
+
+    QColor mBackgroundColor;
+    float mIntensity;
 
 signals:
 

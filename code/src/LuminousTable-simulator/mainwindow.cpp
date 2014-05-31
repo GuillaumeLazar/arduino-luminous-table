@@ -15,12 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
     mIndexBehavior = 0;
-    //mBeahaviours.append(new SimulatorBehaviorRandomDot());
-    //mBeahaviours.append(new SimulatorBehaviorDarkSky());
     beahavior = new SimulatorBehaviorRandomDot();
-
-
-
 
     // Main
     mMainWidget = new QWidget();
@@ -33,7 +28,13 @@ MainWindow::MainWindow(QWidget *parent) :
     // Inputs
     mButtonA = new QPushButton("Button A");
     connect(mButtonA, SIGNAL(clicked()), this, SLOT(onClickButtonA()));
+
     mPotentiometer = new QDial();
+    mPotentiometer->setMinimum(0);
+    mPotentiometer->setMaximum(255);
+    mPotentiometer->setValue(128);
+    connect(mPotentiometer, SIGNAL(valueChanged(int)), this, SLOT(onPotentionmeterChanged(int)));
+
     mInputsLayout = new QVBoxLayout();
     mInputsLayout->addWidget(mButtonA);
     mInputsLayout->addWidget((mPotentiometer));
@@ -49,7 +50,6 @@ MainWindow::~MainWindow()
 {
 
 }
-
 
 void MainWindow::onClickButtonA()
 {
@@ -72,6 +72,11 @@ void MainWindow::onClickButtonA()
         break;
     }
 
-
+    beahavior->getDotMatrix()->setIntensity(mPotentiometer->value());
     mMatrixLayout->addWidget(beahavior->getDotMatrix());
+}
+
+void MainWindow::onPotentionmeterChanged(int value)
+{
+    beahavior->getDotMatrix()->setIntensity(value);
 }

@@ -8,6 +8,8 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
     mRowsCount = rowsCount;
     mColsCount = colsCount;
     mDotSize = 32;
+    mIntensity = 0.5f;
+    mBackgroundColor = backgroundColor;
 
     // matrix memory allocation
     mMatrix = new QColor*[mRowsCount];
@@ -17,7 +19,7 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
 
     for (int x = 0; x < mRowsCount; ++x) {
         for (int y = 0; y < mColsCount; ++y) {
-            mMatrix[x][y] = backgroundColor;
+            mMatrix[x][y] = mBackgroundColor;
         }
     }
 
@@ -26,21 +28,24 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
 
     //add blur effect
     mGraphicsEffect = new QGraphicsBlurEffect();
-    mGraphicsEffect->setBlurRadius(15);
+    mGraphicsEffect->setBlurRadius(5);
     this->setGraphicsEffect(mGraphicsEffect);
-
-    //setBaseSize(rowsCount * mDotSize, colsCount * mDotSize);
 }
 
 
 void QDotMatrix::setColor(int x, int y, CRGB color)
 {
-    mMatrix[x][y] = QColor(color.r, color.g, color.b);
+    this->setColor(x, y, QColor(color.r, color.g, color.b));
 }
 
 void QDotMatrix::setColor(int x, int y, QColor color)
 {
     mMatrix[x][y] = color;
+}
+
+void QDotMatrix::setIntensity(int value)
+{
+    mIntensity = (float)value / 255.0f;
 }
 
 void QDotMatrix::paintEvent(QPaintEvent * pe)
@@ -56,10 +61,13 @@ void QDotMatrix::paintEvent(QPaintEvent * pe)
             int endY = startY + mDotSize;
 
             QColor color = mMatrix[x][y];
-            color.setAlpha(255);
+            color.setRed(color.red() * mIntensity);
+            color.setGreen(color.green() * mIntensity);
+            color.setBlue(color.blue() * mIntensity);
+
+            //color.setAlpha(mIntensity);
             painter.fillRect(QRect(startX, startY, endX, endY), color);
 
         }
     }
-
 }

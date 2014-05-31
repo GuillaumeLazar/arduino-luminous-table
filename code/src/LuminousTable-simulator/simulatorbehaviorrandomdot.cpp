@@ -26,8 +26,6 @@ void SimulatorBehaviorRandomDot::init()
     arrayColor[8] = CRGB::Chocolate;
 
     currentColor = arrayColor[random(COLOR_COUNT)];
-
-    paintAll(CRGB::Black, false);
 }
 
 void SimulatorBehaviorRandomDot::loop()

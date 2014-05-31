@@ -68,5 +68,4 @@ void SimulatorBehaviorDarkSky::loop()
     //delay(100);
 
     readPotentiometerAndButton();
-
 }
