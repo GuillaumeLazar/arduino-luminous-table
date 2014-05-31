@@ -7,6 +7,7 @@
 #include "simulatorbehaviorrandomdot.h"
 #include "simulatorbehaviordarksky.h"
 #include "simulatorbehaviorunicolor.h"
+#include "simulatorbehaviorsnake.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -15,8 +16,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
-    mIndexBehavior = 0;
-    beahavior = new SimulatorBehaviorRandomDot();
+    mIndexBehavior = -1;
+    beahavior = 0;
+    createNextBehavior();
 
     // Main
     mMainWidget = new QWidget();
@@ -61,14 +63,22 @@ void MainWindow::onClickButtonA()
     mMatrixLayout->removeWidget(beahavior->getDotMatrix());
     delete beahavior;
 
+    createNextBehavior();
+
+    beahavior->getDotMatrix()->setIntensity(mPotentiometer->value());
+    mMatrixLayout->addWidget(beahavior->getDotMatrix());
+}
+
+void MainWindow::createNextBehavior()
+{
     mIndexBehavior++;
-    if (mIndexBehavior > 2){
+    if (mIndexBehavior > 3){
         mIndexBehavior = 0;
     }
 
     switch (mIndexBehavior) {
     case 0:
-        beahavior = new SimulatorBehaviorRandomDot();
+        beahavior = new SimulatorBehaviorSnake();
         break;
     case 1:
         beahavior = new SimulatorBehaviorUniColor();
@@ -76,12 +86,12 @@ void MainWindow::onClickButtonA()
     case 2:
         beahavior = new SimulatorBehaviorDarkSky();
         break;
+    case 3:
+        beahavior = new SimulatorBehaviorRandomDot();
+        break;
     default:
         break;
     }
-
-    beahavior->getDotMatrix()->setIntensity(mPotentiometer->value());
-    mMatrixLayout->addWidget(beahavior->getDotMatrix());
 }
 
 void MainWindow::onClickButtonB()

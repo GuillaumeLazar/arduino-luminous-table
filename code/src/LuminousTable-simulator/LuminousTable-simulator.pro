@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     abstractsimulatorbehavior.cpp \
     simulatorbehaviorrandomdot.cpp \
     simulatorbehaviordarksky.cpp \
-    simulatorbehaviorunicolor.cpp
+    simulatorbehaviorunicolor.cpp \
+    simulatorbehaviorsnake.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
@@ -26,7 +27,8 @@ HEADERS  += mainwindow.h \
     abstractsimulatorbehavior.h \
     simulatorbehaviorrandomdot.h \
     simulatorbehaviordarksky.h \
-    simulatorbehaviorunicolor.h
+    simulatorbehaviorunicolor.h \
+    simulatorbehaviorsnake.h
 
 #FORMS    +=
 

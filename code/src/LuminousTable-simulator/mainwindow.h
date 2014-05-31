@@ -37,6 +37,8 @@ private:
     int mIndexBehavior;
     AbstractSimulatorBehavior *beahavior;
 
+    void createNextBehavior();
+
 private slots:
     void onClickButtonA();
     void onClickButtonB();
