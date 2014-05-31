@@ -24,6 +24,7 @@ class AbstractSimulatorBehavior : public QObject
 
 public:
     AbstractSimulatorBehavior(QWidget *parent = 0);
+    ~AbstractSimulatorBehavior();
 
     QDotMatrix *getDotMatrix();
 

@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QBoxLayout>
+#include <QDial>
+#include <QVector>
 
 #include "abstractsimulatorbehavior.h"
 
@@ -18,9 +22,22 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
 
-    AbstractSimulatorBehavior *mAbstractSimulatorBehavior;
+    // UI
+    QWidget *mMainWidget;
+    QBoxLayout *mMainLayout;
+    QBoxLayout *mInputsLayout;
+    QBoxLayout *mMatrixLayout;
+
+    QPushButton *mButtonA;
+    QDial *mPotentiometer;
+
+    // Behaviours
+    int mIndexBehavior;
+    AbstractSimulatorBehavior *beahavior;
+
+private slots:
+    void onClickButtonA();
 
 };
 

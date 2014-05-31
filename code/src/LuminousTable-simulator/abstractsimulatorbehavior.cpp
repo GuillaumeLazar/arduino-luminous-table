@@ -15,6 +15,11 @@ AbstractSimulatorBehavior::AbstractSimulatorBehavior(QWidget *parent)
 
 }
 
+AbstractSimulatorBehavior::~AbstractSimulatorBehavior()
+{
+    delete mDotMatrix;
+}
+
 void AbstractSimulatorBehavior::startLoop()
 {
     // TODO: Check Arduino main loop ~10ms?

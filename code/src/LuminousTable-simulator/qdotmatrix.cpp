@@ -22,11 +22,14 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
     }
 
     this->setFixedSize(rowsCount * mDotSize, colsCount * mDotSize);
+    this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     //add blur effect
     mGraphicsEffect = new QGraphicsBlurEffect();
     mGraphicsEffect->setBlurRadius(15);
     this->setGraphicsEffect(mGraphicsEffect);
+
+    //setBaseSize(rowsCount * mDotSize, colsCount * mDotSize);
 }
 
 
