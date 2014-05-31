@@ -9,6 +9,8 @@ class SimulatorBehaviorDarkSky : public AbstractSimulatorBehavior
 public:
     explicit SimulatorBehaviorDarkSky(QWidget *parent = 0);
 
+    virtual void onClickButtonB();
+
 protected:
     virtual void init();
 

@@ -26,8 +26,11 @@ MainWindow::MainWindow(QWidget *parent) :
     mMatrixLayout->addWidget(beahavior->getDotMatrix());
 
     // Inputs
-    mButtonA = new QPushButton("Button A");
+    mButtonA = new QPushButton("Switch");
+    mButtonB = new QPushButton("Action");
     connect(mButtonA, SIGNAL(clicked()), this, SLOT(onClickButtonA()));
+    connect(mButtonB, SIGNAL(clicked()), this, SLOT(onClickButtonB()));
+
 
     mPotentiometer = new QDial();
     mPotentiometer->setMinimum(0);
@@ -37,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mInputsLayout = new QVBoxLayout();
     mInputsLayout->addWidget(mButtonA);
+    mInputsLayout->addWidget(mButtonB);
     mInputsLayout->addWidget((mPotentiometer));
 
     // Central widget
@@ -74,6 +78,11 @@ void MainWindow::onClickButtonA()
 
     beahavior->getDotMatrix()->setIntensity(mPotentiometer->value());
     mMatrixLayout->addWidget(beahavior->getDotMatrix());
+}
+
+void MainWindow::onClickButtonB()
+{
+    beahavior->onClickButtonB();
 }
 
 void MainWindow::onPotentionmeterChanged(int value)

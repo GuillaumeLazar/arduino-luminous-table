@@ -21,6 +21,16 @@ void SimulatorBehaviorDarkSky::init()
     }
 }
 
+void SimulatorBehaviorDarkSky::onClickButtonB()
+{
+    for(int i=0; i < STARS_COUNT; i++){
+        starsPosition[i][0] = random(X_MAX);
+        starsPosition[i][1] = random(Y_MAX);
+        starsPosition[i][2] = 128;
+        starsPosition[i][3] = 128;
+    }
+}
+
 void SimulatorBehaviorDarkSky::loop()
 {
     paintAll(CRGB::Black, false);
@@ -67,5 +77,5 @@ void SimulatorBehaviorDarkSky::loop()
     FastLED.show();
     //delay(100);
 
-    readPotentiometerAndButton();
+    readInputs();
 }

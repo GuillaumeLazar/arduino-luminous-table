@@ -29,16 +29,21 @@ public:
     QDotMatrix *getDotMatrix();
     void setBrightness(int intensity);
 
+    virtual void onClickButtonB() { }
+
 protected:
     void startLoop();
     void paintAll(CRGB color, bool forceRefresh);
 
+    int analogRead(int port) { return 0; }
+    void randomSeed(int seed);
     int random(int high);
     void delay(int milliseconds);
-    void readPotentiometerAndButton();
-    void setCorrectColor(int x, int y, CRGB currentColor);
 
     virtual void init() = 0;
+
+    void readInputs();
+    void setCorrectColor(int x, int y, CRGB currentColor);
 
     QDotMatrix *mDotMatrix;
     QTimer *mTimer;

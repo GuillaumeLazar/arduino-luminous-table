@@ -30,6 +30,7 @@ private:
     QBoxLayout *mMatrixLayout;
 
     QPushButton *mButtonA;
+    QPushButton *mButtonB;
     QDial *mPotentiometer;
 
     // Behaviours
@@ -38,6 +39,7 @@ private:
 
 private slots:
     void onClickButtonA();
+    void onClickButtonB();
     void onPotentionmeterChanged(int value);
 
 };

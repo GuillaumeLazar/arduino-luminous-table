@@ -28,7 +28,7 @@ QDotMatrix::QDotMatrix(QWidget *parent, int rowsCount, int colsCount, QColor bac
 
     //add blur effect
     mGraphicsEffect = new QGraphicsBlurEffect();
-    mGraphicsEffect->setBlurRadius(5);
+    mGraphicsEffect->setBlurRadius(10);
     this->setGraphicsEffect(mGraphicsEffect);
 }
 

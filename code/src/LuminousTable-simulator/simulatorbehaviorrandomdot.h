@@ -9,6 +9,8 @@ class SimulatorBehaviorRandomDot : public AbstractSimulatorBehavior
 public:
     explicit SimulatorBehaviorRandomDot(QWidget *parent = 0);
 
+    virtual void onClickButtonB();
+
 protected:
     virtual void init();
 
@@ -19,18 +21,12 @@ private:
     // Simulator beahvior variables
     #define COLOR_COUNT 9
 
-
-    void setDotColor(int red, int green, int blue);
-     void readButtonBValue();
-
-     int buttonBValue;
-     int tableSubMode;
+     void setDotColor(int red, int green, int blue);
 
      CRGB currentColor;
      CRGB arrayColor[COLOR_COUNT];
 
      int dotCounter;
-
 };
 
 #endif // SIMULATORBEHAVIORRANDOMDOT_H

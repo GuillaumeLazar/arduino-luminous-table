@@ -9,10 +9,8 @@ SimulatorBehaviorRandomDot::SimulatorBehaviorRandomDot(QWidget *parent) :
 
 void SimulatorBehaviorRandomDot::init()
 {
-    //randomSeed(analogRead(5));
+    randomSeed(analogRead(5));
 
-    //buttonBValue = 0;
-    //tableSubMode = 0;
     dotCounter = 0;
 
     arrayColor[0] = CRGB::DeepPink;
@@ -28,6 +26,12 @@ void SimulatorBehaviorRandomDot::init()
     currentColor = arrayColor[random(COLOR_COUNT)];
 }
 
+void SimulatorBehaviorRandomDot::onClickButtonB()
+{
+    currentColor = arrayColor[random(COLOR_COUNT)];
+    dotCounter = 0;
+}
+
 void SimulatorBehaviorRandomDot::loop()
 {
     // pick up a random coordinates
@@ -39,7 +43,7 @@ void SimulatorBehaviorRandomDot::loop()
     FastLED.show();
 
     // read any changes on Potentiometer and Button B
-    readPotentiometerAndButton();
+    readInputs();
 
     //check auto change mode
     if (dotCounter > 250){

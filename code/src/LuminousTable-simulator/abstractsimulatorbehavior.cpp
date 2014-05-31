@@ -34,12 +34,17 @@ int AbstractSimulatorBehavior::random(int high)
     return qrand() % (high - low) + low;
 }
 
+void AbstractSimulatorBehavior::randomSeed(int seed)
+{
+    //TODO: use the seed!
+}
+
 void AbstractSimulatorBehavior::delay(int milliseconds)
 {
     QThread::msleep(milliseconds);
 }
 
-void AbstractSimulatorBehavior::readPotentiometerAndButton()
+void AbstractSimulatorBehavior::readInputs()
 {
     delay(5 * 10);
 }
@@ -58,7 +63,6 @@ void AbstractSimulatorBehavior::paintAll(CRGB color, boolean forceRefresh)
 
             //(*leds)[(*ledMatrix)[i][j]] = correctColor(i, color);
             setCorrectColor(i, j, color);
-
         }
     }
 
