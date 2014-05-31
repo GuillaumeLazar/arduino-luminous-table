@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     qdotmatrix.cpp \
     abstractsimulatorbehavior.cpp \
     simulatorbehaviorrandomdot.cpp \
-    simulatorbehaviordarksky.cpp
+    simulatorbehaviordarksky.cpp \
+    simulatorbehaviorunicolor.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
     FakeHardware.h \
     abstractsimulatorbehavior.h \
     simulatorbehaviorrandomdot.h \
-    simulatorbehaviordarksky.h
+    simulatorbehaviordarksky.h \
+    simulatorbehaviorunicolor.h
 
 #FORMS    +=
 

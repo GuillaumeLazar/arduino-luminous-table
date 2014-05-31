@@ -6,6 +6,7 @@
 
 #include "simulatorbehaviorrandomdot.h"
 #include "simulatorbehaviordarksky.h"
+#include "simulatorbehaviorunicolor.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -31,11 +32,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mButtonA, SIGNAL(clicked()), this, SLOT(onClickButtonA()));
     connect(mButtonB, SIGNAL(clicked()), this, SLOT(onClickButtonB()));
 
-
     mPotentiometer = new QDial();
     mPotentiometer->setMinimum(0);
     mPotentiometer->setMaximum(255);
-    mPotentiometer->setValue(128);
+    mPotentiometer->setValue(192);
+    beahavior->setBrightness(mPotentiometer->value());
     connect(mPotentiometer, SIGNAL(valueChanged(int)), this, SLOT(onPotentionmeterChanged(int)));
 
     mInputsLayout = new QVBoxLayout();
@@ -61,7 +62,7 @@ void MainWindow::onClickButtonA()
     delete beahavior;
 
     mIndexBehavior++;
-    if (mIndexBehavior > 1){
+    if (mIndexBehavior > 2){
         mIndexBehavior = 0;
     }
 
@@ -70,6 +71,9 @@ void MainWindow::onClickButtonA()
         beahavior = new SimulatorBehaviorRandomDot();
         break;
     case 1:
+        beahavior = new SimulatorBehaviorUniColor();
+        break;
+    case 2:
         beahavior = new SimulatorBehaviorDarkSky();
         break;
     default:
