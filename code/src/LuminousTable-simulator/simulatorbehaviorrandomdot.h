@@ -17,10 +17,19 @@ protected slots:
 
 private:
     // Simulator beahvior variables
-#define COLOR_COUNT 9
-    CRGB currentColor;
-    CRGB arrayColor[COLOR_COUNT];
-    int dotCounter = 0;
+    #define COLOR_COUNT 9
+
+
+    void setDotColor(int red, int green, int blue);
+     void readButtonBValue();
+
+     int buttonBValue;
+     int tableSubMode;
+
+     CRGB currentColor;
+     CRGB arrayColor[COLOR_COUNT];
+
+     int dotCounter;
 
 };
 

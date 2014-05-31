@@ -9,6 +9,12 @@ SimulatorBehaviorRandomDot::SimulatorBehaviorRandomDot(QWidget *parent) :
 
 void SimulatorBehaviorRandomDot::init()
 {
+    //randomSeed(analogRead(5));
+
+    //buttonBValue = 0;
+    //tableSubMode = 0;
+    dotCounter = 0;
+
     arrayColor[0] = CRGB::DeepPink;
     arrayColor[1] = CRGB::Red;
     arrayColor[2] = CRGB::Green;
@@ -19,7 +25,9 @@ void SimulatorBehaviorRandomDot::init()
     arrayColor[7] = CRGB::White;
     arrayColor[8] = CRGB::Chocolate;
 
-    currentColor = arrayColor[0];
+    currentColor = arrayColor[random(COLOR_COUNT)];
+
+    paintAll(CRGB::Black, false);
 }
 
 void SimulatorBehaviorRandomDot::loop()

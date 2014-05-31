@@ -17,11 +17,7 @@ protected slots:
 
 private:
     // Simulator beahvior variables
-#define COLOR_COUNT 9
-#define STARS_COUNT 5
-
-    CRGB currentColor;
-    CRGB arrayColor[COLOR_COUNT];
+#define STARS_COUNT 40
 
     int arrayColorIndex;
     int starsPosition[STARS_COUNT][4];

@@ -2,3 +2,6 @@ code/bin/
 
 *.swp
 .directory
+
+// Qt projects
+*.pro.user

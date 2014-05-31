@@ -13,30 +13,16 @@ void SimulatorBehaviorDarkSky::init()
     //buttonBValue = 0;
     //tableSubMode = 0;
 
-    arrayColor[0] = CRGB::White;
-    arrayColor[1] = CRGB::Red;
-    arrayColor[2] = CRGB::Green;
-    arrayColor[3] = CRGB::Blue;
-    arrayColor[4] = CRGB::Purple;
-    arrayColor[5] = CRGB::Yellow;
-    arrayColor[6] = CRGB::Cyan;
-    arrayColor[7] = CRGB::DeepPink;
-    arrayColor[8] = CRGB::Chocolate;
-
-    arrayColorIndex = 0;
-    currentColor = arrayColor[arrayColorIndex];
-
     for(int i=0; i < STARS_COUNT; i++){
         starsPosition[i][0] = random(X_MAX);
         starsPosition[i][1] = random(Y_MAX);
-        starsPosition[i][2] = 128;
-        starsPosition[i][3] = 128;
+        starsPosition[i][2] = 0;
+        starsPosition[i][3] = 0;
     }
 }
 
 void SimulatorBehaviorDarkSky::loop()
 {
-    //TODO: handle paintAll() function
     paintAll(CRGB::Black, false);
 
     for(int i=0; i < STARS_COUNT; i++){
@@ -75,11 +61,12 @@ void SimulatorBehaviorDarkSky::loop()
         }
 
         //(*leds)[(*ledMatrix)[x][y]] = correctColor(x, color);
-        setCorrectColor(x, y, currentColor);
+        setCorrectColor(x, y, color);
     }
 
     FastLED.show();
     //delay(100);
 
     readPotentiometerAndButton();
+
 }
