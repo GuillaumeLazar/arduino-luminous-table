@@ -30,7 +30,7 @@ class SimulatorBehaviorSnake : public AbstractSimulatorBehavior
 
 public:
     explicit SimulatorBehaviorSnake(QWidget *parent = 0);
-    ~SimulatorBehaviorSnake();
+    virtual ~SimulatorBehaviorSnake();
 
     virtual void onClickButtonB();
 
@@ -40,7 +40,7 @@ protected:
     int isPositionEmpty(int newX, int newY);
     void growUp();
 
-    #define  SNAKEMAXSIZE 10
+    #define  SNAKEMAXSIZE 20
 
     int mSnakeSize;
     CRGB mSnakeColor;

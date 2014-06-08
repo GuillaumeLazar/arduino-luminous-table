@@ -24,7 +24,7 @@ class AbstractSimulatorBehavior : public QObject
 
 public:
     AbstractSimulatorBehavior(QWidget *parent = 0);
-    ~AbstractSimulatorBehavior();
+    virtual ~AbstractSimulatorBehavior();
 
     QDotMatrix *getDotMatrix();
     void setBrightness(int intensity);

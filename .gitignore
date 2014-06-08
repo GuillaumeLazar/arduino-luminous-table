@@ -1,5 +1,6 @@
 code/bin/
 
+*~
 *.swp
 .directory
 

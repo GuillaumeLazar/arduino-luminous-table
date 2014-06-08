@@ -19,7 +19,7 @@ protected slots:
 
 private:
     // Simulator beahvior variables
-#define STARS_COUNT 40
+#define STARS_COUNT 20
 
     int arrayColorIndex;
     int starsPosition[STARS_COUNT][4];

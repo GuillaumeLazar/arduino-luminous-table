@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <FastSPI_LED2.h>
 
+#include "TableBehaviorSnake.h"
 #include "TableBehaviorRandomDot.h"
 #include "TableBehaviorUnicolor.h"
 #include "TableBehaviorDarkSky.h"
@@ -15,11 +16,8 @@ CRGB leds[NUM_LEDS];
 int ledMatrix[X_MAX][Y_MAX];
 
 // 
-#define BEHAVIOR_COUNT 3
-AbstractTableBehavior* arrayBehavior[BEHAVIOR_COUNT];
-TableBehaviorRandomDot tableBehaviorRandomDot;
-TableBehaviorUnicolor tableBehaviorUnicolor;
-TableBehaviorDarkSky tableBehaviorDarkSky;
+#define BEHAVIOR_COUNT 4
+AbstractTableBehavior* arrayBehavior;
 int tableMode = 0;
 
 // TODO: put it into Utils
@@ -60,9 +58,34 @@ void readButtonAValue()
       
       tableMode ++;
       tableMode = tableMode % BEHAVIOR_COUNT;
+      //Serial.println(freeRam());
+      delete arrayBehavior;
+      //Serial.println(freeRam());
+      
+      
+      switch(tableMode){
+        case 0:
+          arrayBehavior = new TableBehaviorSnake();
+          break;
+        case 1:
+          arrayBehavior = new TableBehaviorRandomDot();
+          break;
+        case 2:
+          arrayBehavior = new TableBehaviorUnicolor();
+          break;
+        case 3:
+          arrayBehavior = new TableBehaviorDarkSky();
+          break;
+      }
+      //Serial.println(freeRam());
+      //Serial.println("");
+      
+      arrayBehavior->leds = &leds;
+      arrayBehavior->ledMatrix = &ledMatrix;
 
-      arrayBehavior[tableMode]->paintAll(CRGB::Black, true);
-      //arrayBehavior[tableMode]->doBlack();
+      //arrayBehavior[tableMode]->paintAll(CRGB::Black, true);
+      arrayBehavior->paintAll(CRGB::Black, true);
+
        
       //serialPrintf("tableMode = %d\n", tableMode);
     }
@@ -76,31 +99,17 @@ void setup()
 
   Serial.begin(9600);
   randomSeed(analogRead(2));
-
-  //global init
-  arrayBehavior[0] = &tableBehaviorRandomDot;
-  arrayBehavior[1] = &tableBehaviorUnicolor;
-  arrayBehavior[2] = &tableBehaviorDarkSky;
   
-  //Behavior # 0
-  arrayBehavior[0]->leds = &leds;
-  arrayBehavior[0]->ledMatrix = &ledMatrix;
-  arrayBehavior[0]->doSetup();
-  
-  //Behavior # 1
-  arrayBehavior[1]->leds = &leds;
-  arrayBehavior[1]->ledMatrix = &ledMatrix;
-  
-  //Behavior # 2
-  arrayBehavior[2]->leds = &leds;
-  arrayBehavior[2]->ledMatrix = &ledMatrix;
-
+  arrayBehavior = new TableBehaviorSnake();
+  arrayBehavior->leds = &leds;
+  arrayBehavior->ledMatrix = &ledMatrix;
+  arrayBehavior->doSetup();
 }
 
 // main loop
 void loop()
 {
-  arrayBehavior[tableMode]->doLoop();
+  arrayBehavior->doLoop();
   readButtonAValue();
   
   //Serial.println(freeRam());

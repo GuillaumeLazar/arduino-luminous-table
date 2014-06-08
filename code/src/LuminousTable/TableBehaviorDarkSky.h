@@ -3,7 +3,7 @@
 
 #include "AbstractTableBehavior.h"
 
-#define STARS_COUNT 40
+#define STARS_COUNT 20
 
 class TableBehaviorDarkSky : 
 public AbstractTableBehavior

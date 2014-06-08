@@ -20,6 +20,9 @@ class AbstractTableBehavior
 {
 
 public:
+
+  virtual ~AbstractTableBehavior() { }
+
   void doSetup();
   void paintAll(CRGB color, boolean forceRefresh);  
   virtual void doInit() { };
