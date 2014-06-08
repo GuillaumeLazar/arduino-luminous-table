@@ -2,6 +2,15 @@
 
 #include <QThread>
 
+// QThread::msleep is only public on Qt5...
+// Ugly tricks to process a sleep on Qt4
+class SleepThread : public QThread {
+public:
+   static inline void msleep(unsigned long msecs) {
+       QThread::msleep(msecs);
+   }
+};
+
 AbstractSimulatorBehavior::AbstractSimulatorBehavior(QWidget *parent)
 {
     mTimer = new QTimer(this);
@@ -41,7 +50,7 @@ void AbstractSimulatorBehavior::randomSeed(int seed)
 
 void AbstractSimulatorBehavior::delay(int milliseconds)
 {
-    QThread::msleep(milliseconds);
+    SleepThread::msleep(milliseconds);
 }
 
 void AbstractSimulatorBehavior::readInputs()
