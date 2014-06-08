@@ -7,30 +7,38 @@ SimulatorBehaviorSnake::SimulatorBehaviorSnake(QWidget *parent) :
     this->startLoop();
 }
 
+SimulatorBehaviorSnake::~SimulatorBehaviorSnake()
+{
+    for (int i = 0; i < SNAKEMAXSIZE; ++i) {
+        delete mSnake[i];
+    }
+}
+
 void SimulatorBehaviorSnake::init()
 {
     mSnakeColor = CRGB::Green;
     for (int i = 0; i < SNAKEMAXSIZE; ++i) {
-        mSnake[i] = 0;
+        mSnake[i] = new SnakeUnit();
     }
 
     mSnakeSize = 3;
-    mSnake[0] = new SnakeUnit(9, 4);
-    mSnake[1] = new SnakeUnit(9, 3);
-    mSnake[2] = new SnakeUnit(9, 2);
+    mSnake[0]->set(9, 4);
+    mSnake[1]->set(9, 3);
+    mSnake[2]->set(9, 2);
 
     mDirection = 0;
 }
 
 void SimulatorBehaviorSnake::onClickButtonB()
 {
-    mDirection = random(4);
+    //mDirection = random(4);
+    growUp();
 }
 
 void SimulatorBehaviorSnake::growUp()
 {
     if (mSnakeSize < SNAKEMAXSIZE){
-        mSnake[mSnakeSize] = new SnakeUnit(mSnake[mSnakeSize - 1]->x, mSnake[mSnakeSize - 1]->y);
+        mSnake[mSnakeSize]->set(mSnake[mSnakeSize - 1]->x, mSnake[mSnakeSize - 1]->y);
         mSnakeSize++;
     }
 }
@@ -101,11 +109,14 @@ void SimulatorBehaviorSnake::loop()
         }
     }
 
-
-
     // Gameover ?
     if (newPosX == -1 || newPosY == -1){
-        //TODO: restart it !
+
+        delay(1000);
+        mSnakeSize = 3;
+        mSnake[0]->set(9, 4);
+        mSnake[1]->set(9, 3);
+        mSnake[2]->set(9, 2);
 
     }else{
         // move the snake
@@ -151,7 +162,7 @@ void SimulatorBehaviorSnake::loop()
 
     FastLED.show();
 
-    delay(50);
+    delay(100);
 
     // read any changes on Potentiometer and Button B
     readInputs();

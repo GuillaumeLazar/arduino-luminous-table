@@ -14,11 +14,14 @@ class SimulatorBehaviorSnake : public AbstractSimulatorBehavior
         int y;
 
         SnakeUnit(){
-            this->x = 0;
-            this->y = 0;
+            set(x, y);
         }
 
         SnakeUnit(int x, int y){
+            set(x, y);
+        }
+
+        void set(int x, int y){
             this->x = x;
             this->y = y;
         }
@@ -27,6 +30,7 @@ class SimulatorBehaviorSnake : public AbstractSimulatorBehavior
 
 public:
     explicit SimulatorBehaviorSnake(QWidget *parent = 0);
+    ~SimulatorBehaviorSnake();
 
     virtual void onClickButtonB();
 
@@ -36,7 +40,7 @@ protected:
     int isPositionEmpty(int newX, int newY);
     void growUp();
 
-    #define  SNAKEMAXSIZE 100
+    #define  SNAKEMAXSIZE 10
 
     int mSnakeSize;
     CRGB mSnakeColor;
