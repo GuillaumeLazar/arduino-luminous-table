@@ -9,10 +9,6 @@ SimulatorBehaviorDarkSky::SimulatorBehaviorDarkSky(QWidget *parent) :
 
 void SimulatorBehaviorDarkSky::init()
 {
-    //TODO: handle buttonB
-    //buttonBValue = 0;
-    //tableSubMode = 0;
-
     for(int i=0; i < STARS_COUNT; i++){
         starsPosition[i][0] = random(X_MAX);
         starsPosition[i][1] = random(Y_MAX);

@@ -28,12 +28,12 @@ public:
 
     QDotMatrix *getDotMatrix();
     void setBrightness(int intensity);
-
+    void paintAll(CRGB color, bool forceRefresh);
     virtual void onClickButtonB() { }
 
 protected:
     void startLoop();
-    void paintAll(CRGB color, bool forceRefresh);
+
 
     int analogRead(int port) { return 0; }
     void randomSeed(int seed);

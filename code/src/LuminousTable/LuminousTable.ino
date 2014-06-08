@@ -61,7 +61,8 @@ void readButtonAValue()
       tableMode ++;
       tableMode = tableMode % BEHAVIOR_COUNT;
 
-      arrayBehavior[tableMode]->doBlack();
+      arrayBehavior[tableMode]->paintAll(CRGB::Black, true);
+      //arrayBehavior[tableMode]->doBlack();
        
       //serialPrintf("tableMode = %d\n", tableMode);
     }

@@ -55,7 +55,7 @@ void AbstractSimulatorBehavior::delay(int milliseconds)
 
 void AbstractSimulatorBehavior::readInputs()
 {
-    delay(5 * 10);
+    delay(1 * 10);
 }
 
 void AbstractSimulatorBehavior::setCorrectColor(int x, int y, CRGB currentColor)

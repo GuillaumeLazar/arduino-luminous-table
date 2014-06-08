@@ -5,8 +5,6 @@ TableBehaviorRandomDot::TableBehaviorRandomDot()
 {
   randomSeed(analogRead(5));
 
-  buttonBValue = 0;
-  tableSubMode = 0;
   dotCounter = 0;
 
   arrayColor[0] = CRGB::DeepPink;
@@ -22,65 +20,31 @@ TableBehaviorRandomDot::TableBehaviorRandomDot()
   currentColor = arrayColor[random(COLOR_COUNT)];
 }
 
-void TableBehaviorRandomDot::readButtonBValue()
+void TableBehaviorRandomDot::onClickButtonB()
 {
-
-  int val = digitalRead(BUTTON_B_PIN);  // read input value
-  if (val != buttonBValue){
-    buttonBValue = val;
-    //serialPrintf("button B = %d\n", buttonBValue);
-
-    if (buttonBValue == HIGH){
-      int noteDuration = 200;
-      tone(SPEAKER_PIN, NOTE_D5, noteDuration);
-      delay(noteDuration);
-      noTone(SPEAKER_PIN);
-
-    }
-    else{
-
-      currentColor = arrayColor[random(COLOR_COUNT)];
-
-      Serial.println("button B pressed\n");
-      //Serial.println(dotCounter);
-      dotCounter = 0;
-    }
-  }
-}
-
-
-void TableBehaviorRandomDot::setDotColor(int red, int green, int blue)
-{
-  currentColor.r = red;
-  currentColor.g = green;
-  currentColor.b = blue;
+  currentColor = arrayColor[random(COLOR_COUNT)];
+  dotCounter = 0;
 }
 
 void TableBehaviorRandomDot::doLoop()
 {
+    // pick up a random coordinates
+    int x = random(20);
+    int y = random(10);
 
-  int x = random(20);
-  int y = random(10);
+    // set color and show it!
+    setCorrectColor(x, y, currentColor);
+    FastLED.show();
 
-  (*leds)[(*ledMatrix)[x][y]] = correctColor(x, currentColor);
-  dotCounter ++;
+    // read any changes on Potentiometer and Button B
+    readInputs();
 
-  FastLED.show();
-
-  int i = 0;
-  while(i < 5){
-    delay(10);
-    readPotentiometerValue();
-    readButtonBValue();
-    i++; 
-  }
-
-
-  //check auto change mode
-  if (dotCounter > 250){
-    //Serial.println(dotCounter);
-    currentColor = arrayColor[random(COLOR_COUNT)];
-    dotCounter = 0;
-  }
+    //check auto change mode
+    if (dotCounter > 250){
+        currentColor = arrayColor[random(COLOR_COUNT)];
+        dotCounter = 0;
+    }else{
+        dotCounter ++;
+    }
 }
 
