@@ -7,6 +7,7 @@
 #include "TableBehaviorRandomDot.h"
 #include "TableBehaviorSnake.h"
 #include "TableBehaviorUnicolor.h"
+#include "TableBehaviorPixelart.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -71,13 +72,14 @@ void MainWindow::onClickButtonA()
 void MainWindow::createNextBehavior()
 {
     mIndexBehavior++;
-    if (mIndexBehavior > 3){
+
+    if (mIndexBehavior > 4){
         mIndexBehavior = 0;
     }
 
     switch (mIndexBehavior) {
     case 0:
-        beahavior = new TableBehaviorSnake();
+        beahavior = new TableBehaviorPixelart();
         break;
     case 1:
         beahavior = new TableBehaviorUnicolor();
@@ -88,9 +90,13 @@ void MainWindow::createNextBehavior()
     case 3:
         beahavior = new TableBehaviorRandomDot();
         break;
+    case 4:
+        beahavior = new TableBehaviorSnake();
+        break;
     default:
         break;
     }
+
 
     beahavior->startLoop();
 }

@@ -5,6 +5,7 @@
 #include "TableBehaviorRandomDot.h"
 #include "TableBehaviorUnicolor.h"
 #include "TableBehaviorDarkSky.h"
+#include "TableBehaviorPixelart.h"
 
 // pin defines
 #define BUTTON_A_PIN 4
@@ -16,7 +17,7 @@ CRGB leds[NUM_LEDS];
 int ledMatrix[X_MAX][Y_MAX];
 
 // 
-#define BEHAVIOR_COUNT 4
+#define BEHAVIOR_COUNT 5
 AbstractTableBehavior* arrayBehavior;
 int tableMode = 0;
 
@@ -75,6 +76,9 @@ void readButtonAValue()
           break;
         case 3:
           arrayBehavior = new TableBehaviorDarkSky();
+          break;
+        case 4:
+          arrayBehavior = new TableBehaviorPixelart();
           break;
       }
       //Serial.println(freeRam());
