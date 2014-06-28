@@ -1,23 +1,17 @@
-#include "simulatorbehaviordarksky.h"
+#include "TableBehaviorDarkSky.h"
 
-SimulatorBehaviorDarkSky::SimulatorBehaviorDarkSky(QWidget *parent) :
-    AbstractSimulatorBehavior(parent)
+
+TableBehaviorDarkSky::TableBehaviorDarkSky()
 {
-    this->init();
-    this->startLoop();
+  for(int i=0; i < STARS_COUNT; i++){
+    starsPosition[i][0] = random(X_MAX);  
+    starsPosition[i][1] = random(Y_MAX);
+    starsPosition[i][2] = 128;
+    starsPosition[i][3] = 128;
+  }
 }
 
-void SimulatorBehaviorDarkSky::init()
-{
-    for(int i=0; i < STARS_COUNT; i++){
-        starsPosition[i][0] = random(X_MAX);
-        starsPosition[i][1] = random(Y_MAX);
-        starsPosition[i][2] = 0;
-        starsPosition[i][3] = 0;
-    }
-}
-
-void SimulatorBehaviorDarkSky::onClickButtonB()
+void TableBehaviorDarkSky::onClickButtonB()
 {
     for(int i=0; i < STARS_COUNT; i++){
         starsPosition[i][0] = random(X_MAX);
@@ -27,7 +21,7 @@ void SimulatorBehaviorDarkSky::onClickButtonB()
     }
 }
 
-void SimulatorBehaviorDarkSky::loop()
+void TableBehaviorDarkSky::doLoop()
 {
     paintAll(CRGB::Black, false);
 
@@ -75,3 +69,4 @@ void SimulatorBehaviorDarkSky::loop()
 
     readInputs();
 }
+

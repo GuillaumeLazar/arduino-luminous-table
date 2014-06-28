@@ -1,20 +1,7 @@
-#include "simulatorbehaviorsnake.h"
+#include "TableBehaviorSnake.h"
 
-SimulatorBehaviorSnake::SimulatorBehaviorSnake(QWidget *parent) :
-    AbstractSimulatorBehavior(parent)
-{
-    this->init();
-    this->startLoop();
-}
 
-SimulatorBehaviorSnake::~SimulatorBehaviorSnake()
-{
-    for (int i = 0; i < SNAKEMAXSIZE; ++i) {
-        delete mSnake[i];
-    }
-}
-
-void SimulatorBehaviorSnake::init()
+TableBehaviorSnake::TableBehaviorSnake()
 {
     mSnakeColor = CRGB::Green;
     for (int i = 0; i < SNAKEMAXSIZE; ++i) {
@@ -29,13 +16,20 @@ void SimulatorBehaviorSnake::init()
     mDirection = 0;
 }
 
-void SimulatorBehaviorSnake::onClickButtonB()
+TableBehaviorSnake::~TableBehaviorSnake()
+{
+    for (int i = 0; i < SNAKEMAXSIZE; ++i) {
+        delete mSnake[i];
+    }
+}
+
+void TableBehaviorSnake::onClickButtonB()
 {
     //mDirection = random(4);
     growUp();
 }
 
-void SimulatorBehaviorSnake::growUp()
+void TableBehaviorSnake::growUp()
 {
     if (mSnakeSize < SNAKEMAXSIZE){
         mSnake[mSnakeSize]->set(mSnake[mSnakeSize - 1]->x, mSnake[mSnakeSize - 1]->y);
@@ -43,7 +37,7 @@ void SimulatorBehaviorSnake::growUp()
     }
 }
 
-int SimulatorBehaviorSnake::isPositionEmpty(int x, int y)
+int TableBehaviorSnake::isPositionEmpty(int x, int y)
 {
     // Check gamefield
     if (x < 0){return 0;}
@@ -58,12 +52,13 @@ int SimulatorBehaviorSnake::isPositionEmpty(int x, int y)
         }
     }
 
+
     return 1;
 }
 
-void SimulatorBehaviorSnake::loop()
+void TableBehaviorSnake::doLoop()
 {
-    paintAll(CRGB::Black, false);
+   paintAll(CRGB::Black, false);
 
     int newPosX = -1;
     int newPosY = -1;

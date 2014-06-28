@@ -3,11 +3,10 @@
 #include <QDebug>
 #include <QColor>
 
-
-#include "simulatorbehaviorrandomdot.h"
-#include "simulatorbehaviordarksky.h"
-#include "simulatorbehaviorunicolor.h"
-#include "simulatorbehaviorsnake.h"
+#include "TableBehaviorDarkSky.h"
+#include "TableBehaviorRandomDot.h"
+#include "TableBehaviorSnake.h"
+#include "TableBehaviorUnicolor.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -78,20 +77,22 @@ void MainWindow::createNextBehavior()
 
     switch (mIndexBehavior) {
     case 0:
-        beahavior = new SimulatorBehaviorSnake();
+        beahavior = new TableBehaviorSnake();
         break;
     case 1:
-        beahavior = new SimulatorBehaviorUniColor();
+        beahavior = new TableBehaviorUnicolor();
         break;
     case 2:
-        beahavior = new SimulatorBehaviorDarkSky();
+        beahavior = new TableBehaviorDarkSky();
         break;
     case 3:
-        beahavior = new SimulatorBehaviorRandomDot();
+        beahavior = new TableBehaviorRandomDot();
         break;
     default:
         break;
     }
+
+    beahavior->startLoop();
 }
 
 void MainWindow::onClickButtonB()

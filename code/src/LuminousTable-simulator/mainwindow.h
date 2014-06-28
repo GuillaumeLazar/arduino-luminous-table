@@ -7,7 +7,7 @@
 #include <QDial>
 #include <QVector>
 
-#include "abstractsimulatorbehavior.h"
+#include "AbstractTableBehavior.h"
 
 namespace Ui {
 class MainWindow;
@@ -35,7 +35,7 @@ private:
 
     // Behaviours
     int mIndexBehavior;
-    AbstractSimulatorBehavior *beahavior;
+    AbstractTableBehavior *beahavior;
 
     void createNextBehavior();
 

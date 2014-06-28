@@ -15,21 +15,23 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     qdotmatrix.cpp \
-    abstractsimulatorbehavior.cpp \
-    simulatorbehaviorrandomdot.cpp \
-    simulatorbehaviordarksky.cpp \
-    simulatorbehaviorunicolor.cpp \
-    simulatorbehaviorsnake.cpp
+    TableBehaviorRandomDot.cpp \
+    AbstractTableBehavior.cpp \
+    TableBehaviorSnake.cpp \
+    TableBehaviorUnicolor.cpp \
+    TableBehaviorDarkSky.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
     FakeHardware.h \
-    abstractsimulatorbehavior.h \
-    simulatorbehaviorrandomdot.h \
-    simulatorbehaviordarksky.h \
-    simulatorbehaviorunicolor.h \
-    simulatorbehaviorsnake.h
+    TableBehaviorRandomDot.h \
+    AbstractTableBehavior.h \
+    TableBehaviorSnake.h \
+    TableBehaviorUnicolor.h \
+    TableBehaviorDarkSky.h
 
 #FORMS    +=
 
 DEFINES += MODE_SIMULATOR
+
+OTHER_FILES +=

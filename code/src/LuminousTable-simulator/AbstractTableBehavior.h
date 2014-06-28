@@ -1,5 +1,5 @@
-#ifndef ABSTRACTSIMULATORBEHAVIOR_H
-#define ABSTRACTSIMULATORBEHAVIOR_H
+#ifndef AbstractTableBehavior_H
+#define AbstractTableBehavior_H
 
 #include <QTimer>
 
@@ -10,7 +10,7 @@
 #define X_MAX 20
 #define Y_MAX 10
 
-class AbstractSimulatorBehavior : public QObject
+class AbstractTableBehavior : public QObject
 {
     Q_OBJECT
 
@@ -23,16 +23,17 @@ class AbstractSimulatorBehavior : public QObject
     };
 
 public:
-    AbstractSimulatorBehavior(QWidget *parent = 0);
-    virtual ~AbstractSimulatorBehavior();
+    AbstractTableBehavior(QWidget *parent = 0);
+    virtual ~AbstractTableBehavior();
 
     QDotMatrix *getDotMatrix();
+    void startLoop();
     void setBrightness(int intensity);
     void paintAll(CRGB color, bool forceRefresh);
     virtual void onClickButtonB() { }
 
 protected:
-    void startLoop();
+
 
 
     int analogRead(int port) { return 0; }
@@ -40,7 +41,7 @@ protected:
     int random(int high);
     void delay(int milliseconds);
 
-    virtual void init() = 0;
+    //virtual void init() = 0;
 
     void readInputs();
     void setCorrectColor(int x, int y, CRGB currentColor);
@@ -50,7 +51,7 @@ protected:
     FakeFastLED FastLED;
 
 protected slots:
-    virtual void loop() = 0;
+    virtual void doLoop() = 0;
 };
 
-#endif // ABSTRACTSIMULATORBEHAVIOR_H
+#endif // AbstractTableBehavior_H

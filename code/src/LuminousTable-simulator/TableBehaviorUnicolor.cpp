@@ -1,15 +1,9 @@
-#include "simulatorbehaviorunicolor.h"
+#include "TableBehaviorUnicolor.h"
 
-SimulatorBehaviorUniColor::SimulatorBehaviorUniColor(QWidget *parent) :
-    AbstractSimulatorBehavior(parent)
-{
-    this->init();
-    this->startLoop();
-}
 
-void SimulatorBehaviorUniColor::init()
+TableBehaviorUnicolor::TableBehaviorUnicolor()
 {
-    arrayColor[0] = CRGB::White;
+  arrayColor[0] = CRGB::White;
     arrayColor[1] = CRGB::Red;
     arrayColor[2] = CRGB::Green;
     arrayColor[3] = CRGB::Blue;
@@ -23,7 +17,7 @@ void SimulatorBehaviorUniColor::init()
     currentColor = arrayColor[arrayColorIndex];
 }
 
-void SimulatorBehaviorUniColor::onClickButtonB()
+void TableBehaviorUnicolor::onClickButtonB()
 {
     arrayColorIndex++;
     arrayColorIndex = arrayColorIndex % COLOR_COUNT;
@@ -31,9 +25,9 @@ void SimulatorBehaviorUniColor::onClickButtonB()
     //paintAll(currentColor, true);
 }
 
-void SimulatorBehaviorUniColor::loop()
+void TableBehaviorUnicolor::doLoop()
 {
-    paintAll(currentColor, true);
+     paintAll(currentColor, true);
 
     // read any changes on Potentiometer and Button B
     readInputs();
