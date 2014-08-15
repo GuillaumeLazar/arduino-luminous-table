@@ -14,6 +14,7 @@
 #define POT_PIN 0
 #define BUTTON_B_PIN 3
 #define SPEAKER_PIN 8
+#define MIC_ANALOG_PIN 1 //A1
 
 
 class AbstractTableBehavior
@@ -43,6 +44,7 @@ protected:
 
   int potValue;
   int newBrightness;
+  int mSoundLevel;
 
 };
 

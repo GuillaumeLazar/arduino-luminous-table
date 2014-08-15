@@ -6,10 +6,12 @@
 #include "TableBehaviorUnicolor.h"
 #include "TableBehaviorDarkSky.h"
 #include "TableBehaviorPixelart.h"
+#include "TableBehaviorVUmeter.h"
 
 // pin defines
 #define BUTTON_A_PIN 4
 #define SPEAKER_PIN 8
+#define MIC_ANALOG_PIN 1 //A
 int buttonAValue = 0;
 
 // leds control
@@ -66,7 +68,7 @@ void readButtonAValue()
       
       switch(tableMode){
         case 0:
-          arrayBehavior = new TableBehaviorSnake();
+          arrayBehavior = new TableBehaviorVUmeter();
           break;
         case 1:
           arrayBehavior = new TableBehaviorRandomDot();
@@ -78,7 +80,7 @@ void readButtonAValue()
           arrayBehavior = new TableBehaviorDarkSky();
           break;
         case 4:
-          arrayBehavior = new TableBehaviorPixelart();
+          arrayBehavior = new TableBehaviorSnake();
           break;
       }
       //Serial.println(freeRam());
@@ -102,9 +104,9 @@ void setup()
   delay(2000);
 
   Serial.begin(9600);
-  randomSeed(analogRead(2));
+  randomSeed(analogRead(3));
   
-  arrayBehavior = new TableBehaviorSnake();
+  arrayBehavior = new TableBehaviorVUmeter();
   arrayBehavior->leds = &leds;
   arrayBehavior->ledMatrix = &ledMatrix;
   arrayBehavior->doSetup();

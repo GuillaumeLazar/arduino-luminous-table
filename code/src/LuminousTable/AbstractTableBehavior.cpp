@@ -44,16 +44,16 @@ void AbstractTableBehavior::initLedMatrix()
 
 void AbstractTableBehavior::readInputs()
 {
-  
+
   int i = 0;
   while(i < 1){
     delay(10);
     i++; 
-  
+
     //invert pot value
     int potReadValue = 1023 - analogRead(POT_PIN);
     int diffValue = potReadValue - potValue;
-  
+
     if (potReadValue != potValue && (abs(diffValue) > 5) ){
       potValue = potReadValue;
       newBrightness = potValue >> 2; //fast division by 4
@@ -62,34 +62,40 @@ void AbstractTableBehavior::readInputs()
       //serialPrintf("pot = %d\n", potValue);
       //serialPrintf("newBrightness = %d\n", newBrightness);
     }
-    
-    
-    
+
+
+
     int val = digitalRead(BUTTON_B_PIN);  // read input value
     if (val != buttonBValue){
       buttonBValue = val;
       //serialPrintf("button B = %d\n", buttonBValue);
-  
+
       if (buttonBValue == HIGH){
         int noteDuration = 200;
         tone(SPEAKER_PIN, NOTE_D5, noteDuration);
         delay(noteDuration);
         noTone(SPEAKER_PIN);
-  
+
       }
       else{
         onClickButtonB();
       }
     }
+
+
   }
+  
+     // mic
+    int rawValue = analogRead(MIC_ANALOG_PIN);            
+    mSoundLevel = map(rawValue, 0, 100, 0, 20);  
 
 }
 
 CRGB AbstractTableBehavior::correctColor(int cols, CRGB color)
 {
   CRGB colorCorrected;
-  
-  
+
+
   if (cols < 10){
     colorCorrected.r = 0.8f * color.r;
     colorCorrected.g = 0.8f * color.g;
@@ -106,24 +112,25 @@ CRGB AbstractTableBehavior::correctColor(int cols, CRGB color)
 
 void AbstractTableBehavior::setCorrectColor(int x, int y, CRGB currentColor)
 {
-    (*leds)[(*ledMatrix)[x][y]] = correctColor(x, currentColor);
-    //mDotMatrix->setColor(x, y, currentColor);
+  (*leds)[(*ledMatrix)[x][y]] = correctColor(x, currentColor);
+  //mDotMatrix->setColor(x, y, currentColor);
 }
 
 void AbstractTableBehavior::paintAll(CRGB color, boolean forceRefresh)
 {
 
-    for(int i=0; i < X_MAX; i++){
-        for(int j=0; j < Y_MAX; j++){
+  for(int i=0; i < X_MAX; i++){
+    for(int j=0; j < Y_MAX; j++){
 
-            //(*leds)[(*ledMatrix)[i][j]] = correctColor(i, color);
-            setCorrectColor(i, j, color);
-        }
+      //(*leds)[(*ledMatrix)[i][j]] = correctColor(i, color);
+      setCorrectColor(i, j, color);
     }
+  }
 
-    if (forceRefresh){
-        FastLED.show();
-    }
+  if (forceRefresh){
+    FastLED.show();
+  }
 }
+
 
 

@@ -8,6 +8,7 @@
 #include "TableBehaviorSnake.h"
 #include "TableBehaviorUnicolor.h"
 #include "TableBehaviorPixelart.h"
+#include "TableBehaviorVUmeter.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -41,10 +42,17 @@ MainWindow::MainWindow(QWidget *parent) :
     beahavior->setBrightness(mPotentiometer->value());
     connect(mPotentiometer, SIGNAL(valueChanged(int)), this, SLOT(onPotentionmeterChanged(int)));
 
+    mSoundLevel = new QSlider(Qt::Horizontal);
+    mSoundLevel->setMinimum(0);
+    mSoundLevel->setMaximum(20);
+    mSoundLevel->setValue(0);
+    connect(mSoundLevel, SIGNAL(valueChanged(int)), this, SLOT(onSoundLevelChanged(int)));
+
     mInputsLayout = new QVBoxLayout();
     mInputsLayout->addWidget(mButtonA);
     mInputsLayout->addWidget(mButtonB);
-    mInputsLayout->addWidget((mPotentiometer));
+    mInputsLayout->addWidget(mSoundLevel);
+    mInputsLayout->addWidget(mPotentiometer);
 
     // Central widget
     mMainLayout->addLayout(mMatrixLayout);
@@ -79,7 +87,7 @@ void MainWindow::createNextBehavior()
 
     switch (mIndexBehavior) {
     case 0:
-        beahavior = new TableBehaviorPixelart();
+        beahavior = new TableBehaviorVUmeter();
         break;
     case 1:
         beahavior = new TableBehaviorUnicolor();
@@ -109,4 +117,9 @@ void MainWindow::onClickButtonB()
 void MainWindow::onPotentionmeterChanged(int value)
 {
     beahavior->getDotMatrix()->setIntensity(value);
+}
+
+void MainWindow::onSoundLevelChanged(int value)
+{
+    beahavior->setSoundLevel(value);
 }

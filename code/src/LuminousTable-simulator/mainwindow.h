@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QBoxLayout>
 #include <QDial>
+#include <QSlider>
 #include <QVector>
 
 #include "AbstractTableBehavior.h"
@@ -32,6 +33,7 @@ private:
     QPushButton *mButtonA;
     QPushButton *mButtonB;
     QDial *mPotentiometer;
+    QSlider *mSoundLevel;
 
     // Behaviours
     int mIndexBehavior;
@@ -42,7 +44,9 @@ private:
 private slots:
     void onClickButtonA();
     void onClickButtonB();
+    void onSoundLevelChanged(int value);
     void onPotentionmeterChanged(int value);
+
 
 };
 

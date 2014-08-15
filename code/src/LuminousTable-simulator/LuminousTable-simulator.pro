@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     TableBehaviorSnake.cpp \
     TableBehaviorUnicolor.cpp \
     TableBehaviorDarkSky.cpp \
-    TableBehaviorPixelart.cpp
+    TableBehaviorPixelart.cpp \
+    TableBehaviorVUmeter.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
@@ -30,7 +31,8 @@ HEADERS  += mainwindow.h \
     TableBehaviorSnake.h \
     TableBehaviorUnicolor.h \
     TableBehaviorDarkSky.h \
-    TableBehaviorPixelart.h
+    TableBehaviorPixelart.h \
+    TableBehaviorVUmeter.h
 
 #FORMS    +=
 

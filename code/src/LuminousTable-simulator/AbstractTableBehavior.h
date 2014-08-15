@@ -29,6 +29,7 @@ public:
     QDotMatrix *getDotMatrix();
     void startLoop();
     void setBrightness(int intensity);
+    void setSoundLevel(int level);
     void paintAll(CRGB color, bool forceRefresh);
     virtual void onClickButtonB() { }
 
@@ -49,6 +50,8 @@ protected:
     QDotMatrix *mDotMatrix;
     QTimer *mTimer;
     FakeFastLED FastLED;
+
+    int mSoundLevel;
 
 protected slots:
     virtual void doLoop() = 0;

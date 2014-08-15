@@ -19,6 +19,7 @@ AbstractTableBehavior::AbstractTableBehavior(QWidget *parent)
     connect(mTimer, SIGNAL(timeout()), this, SLOT(doLoop()));
 
     FastLED.dotMatrix = mDotMatrix;
+    mSoundLevel = 0;
 }
 
 AbstractTableBehavior::~AbstractTableBehavior()
@@ -83,4 +84,9 @@ void AbstractTableBehavior::paintAll(CRGB color, boolean forceRefresh)
 void AbstractTableBehavior::setBrightness(int intensity)
 {
     mDotMatrix->setIntensity(intensity);
+}
+
+void AbstractTableBehavior::setSoundLevel(int level)
+{
+    mSoundLevel = level;
 }
