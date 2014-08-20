@@ -108,7 +108,7 @@ void setup()
   Serial.begin(9600);
   randomSeed(analogRead(3));
   
-  arrayBehavior = new TableBehaviorVUmeter();
+  arrayBehavior = new TableBehaviorRandomDotSoundTableBehaviorVUmeter();
   arrayBehavior->leds = &leds;
   arrayBehavior->ledMatrix = &ledMatrix;
   arrayBehavior->doSetup();
