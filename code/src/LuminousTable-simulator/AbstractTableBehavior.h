@@ -46,6 +46,7 @@ protected:
 
     void readInputs();
     void setCorrectColor(int x, int y, CRGB currentColor);
+    void drawSquare(int x, int y, int size, CRGB color);
 
     QDotMatrix *mDotMatrix;
     QTimer *mTimer;

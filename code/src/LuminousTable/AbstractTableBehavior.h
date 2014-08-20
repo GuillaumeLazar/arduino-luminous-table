@@ -41,6 +41,7 @@ protected:
   CRGB correctColor(int cols, CRGB color);
   void setCorrectColor(int x, int y, CRGB currentColor);
   void initLedMatrix();
+  void drawSquare(int x, int y, int size, CRGB color);
 
   int potValue;
   int newBrightness;

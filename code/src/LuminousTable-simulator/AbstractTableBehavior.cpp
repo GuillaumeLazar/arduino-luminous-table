@@ -90,3 +90,14 @@ void AbstractTableBehavior::setSoundLevel(int level)
 {
     mSoundLevel = level;
 }
+
+void AbstractTableBehavior::drawSquare(int x, int y, int size, CRGB color)
+{
+    for(int cX = x; cX < x + size; cX++){
+        for(int cY = y; cY < y + size; cY++){
+            if(cX > 0 && cX < X_MAX && cY > 0 && cY < Y_MAX ){
+                setCorrectColor(cX, cY, color);
+            }
+        }
+    }
+}

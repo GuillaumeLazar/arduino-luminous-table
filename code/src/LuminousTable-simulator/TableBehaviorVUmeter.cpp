@@ -10,7 +10,7 @@ TableBehaviorVUmeter::TableBehaviorVUmeter()
 
 void TableBehaviorVUmeter::onClickButtonB()
 {
-
+    paintAll(CRGB::Black, false);
 }
 
 void TableBehaviorVUmeter::doLoop()
@@ -44,8 +44,8 @@ void TableBehaviorVUmeter::doLoop()
 
     //draw body
     for(int i=0; i < currentSoundLevel ; i++){
-        color.r = i*10 - 200;
         color.g = 200 - i*10;
+        color.r = 200 - color.g;
         color.b = 0;
 
         for(int y=0; y < Y_MAX ; y++){

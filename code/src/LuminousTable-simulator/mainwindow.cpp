@@ -9,6 +9,8 @@
 #include "TableBehaviorUnicolor.h"
 #include "TableBehaviorPixelart.h"
 #include "TableBehaviorVUmeter.h"
+#include "TableBehaviorVUmeterB.h"
+#include "TableBehaviorRandomDotSound.h"
 
 //---------------------------------------------------------------------------------
 // SIMULATOR INITIALIZATION
@@ -87,13 +89,13 @@ void MainWindow::createNextBehavior()
 
     switch (mIndexBehavior) {
     case 0:
-        beahavior = new TableBehaviorVUmeter();
+        beahavior = new TableBehaviorRandomDotSound();
         break;
     case 1:
-        beahavior = new TableBehaviorUnicolor();
+        beahavior = new TableBehaviorVUmeter();
         break;
     case 2:
-        beahavior = new TableBehaviorDarkSky();
+        beahavior = new TableBehaviorVUmeterB();
         break;
     case 3:
         beahavior = new TableBehaviorRandomDot();

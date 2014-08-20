@@ -7,6 +7,8 @@
 #include "TableBehaviorDarkSky.h"
 #include "TableBehaviorPixelart.h"
 #include "TableBehaviorVUmeter.h"
+#include "TableBehaviorVUmeterB.h"
+#include "TableBehaviorRandomDotSound.h"
 
 // pin defines
 #define BUTTON_A_PIN 4
@@ -68,10 +70,10 @@ void readButtonAValue()
       
       switch(tableMode){
         case 0:
-          arrayBehavior = new TableBehaviorVUmeter();
+          arrayBehavior = new TableBehaviorRandomDotSound();
           break;
         case 1:
-          arrayBehavior = new TableBehaviorRandomDot();
+          arrayBehavior = new TableBehaviorVUmeterB();
           break;
         case 2:
           arrayBehavior = new TableBehaviorUnicolor();

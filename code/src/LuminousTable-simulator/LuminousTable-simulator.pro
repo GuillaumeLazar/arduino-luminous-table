@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     TableBehaviorUnicolor.cpp \
     TableBehaviorDarkSky.cpp \
     TableBehaviorPixelart.cpp \
-    TableBehaviorVUmeter.cpp
+    TableBehaviorVUmeter.cpp \
+    TableBehaviorVUmeterB.cpp \
+    TableBehaviorRandomDotSound.cpp
 
 HEADERS  += mainwindow.h \
     qdotmatrix.h \
@@ -32,7 +34,9 @@ HEADERS  += mainwindow.h \
     TableBehaviorUnicolor.h \
     TableBehaviorDarkSky.h \
     TableBehaviorPixelart.h \
-    TableBehaviorVUmeter.h
+    TableBehaviorVUmeter.h \
+    TableBehaviorVUmeterB.h \
+    TableBehaviorRandomDotSound.h
 
 #FORMS    +=
 
