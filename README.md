@@ -46,7 +46,7 @@ Breadboard view image developed using Fritzing software.
 I'm using Arduino IDE v1.0.5. You can download it here : http://arduino.cc/en/Main/Software
 
 ##### Library : FastSPI_LED2
-FastSPI_LED2 is the LOW LEVEL library that help you to communicate with yours LED. The work of this library is just amazing! I'm using the FastSPI_LED2 "Release Candidate 5" that I think can be always found at http://code.google.com/p/fastspi/downloads/list. But I recently discovered that the project is now on GitHub too :) https://github.com/FastLED/FastLED. I will try, as soon as possible, to integrate and test the "Final version" from GitHub.
+FastSPI_LED2 is the LOW LEVEL library that help you to communicate with yours LED. The work of this library is just amazing! I'm using the FastSPI_LED2 "Release Candidate 5" that I think can be always found at http://code.google.com/p/fastspi/downloads/list. But I recently discovered that the project is now on GitHub too :) https://github.com/FastLED/FastLED.
 
 Basically, you just need to extract the folder "FastSPI_LED2" inside the "libraries" folder of ArduinoIDE.
 
