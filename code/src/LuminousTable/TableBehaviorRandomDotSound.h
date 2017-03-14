@@ -2,7 +2,6 @@
 #define _TABLE_BEHAVIOR_RANDOM_DOT_SOUND_H_
 
 #include "AbstractTableBehavior.h"
-#include <QDebug>
 
 class TableBehaviorRandomDotSound :
 public AbstractTableBehavior

@@ -2,7 +2,7 @@
 #define _ABSTRACT_TABLE_BEHAVIOR_H_
 
 #include "Arduino.h"
-#include "FastSPI_LED2.h"
+#include "FastLED.h"
 #include "pitches.h"
 
 #define NUM_LEDS 200

@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include <FastSPI_LED2.h>
+#include <FastLED.h>
 
 #include "TableBehaviorSnake.h"
 #include "TableBehaviorRandomDot.h"
@@ -21,9 +21,10 @@ CRGB leds[NUM_LEDS];
 int ledMatrix[X_MAX][Y_MAX];
 
 // 
-#define BEHAVIOR_COUNT 5
+#define BEHAVIOR_COUNT 3
 AbstractTableBehavior* arrayBehavior;
 int tableMode = 0;
+
 
 // TODO: put it into Utils
 int freeRam () {
@@ -70,19 +71,13 @@ void readButtonAValue()
       
       switch(tableMode){
         case 0:
-          arrayBehavior = new TableBehaviorRandomDotSound();
+          arrayBehavior = new TableBehaviorDarkSky();
           break;
         case 1:
-          arrayBehavior = new TableBehaviorVUmeterB();
+          arrayBehavior = new TableBehaviorSnake();
           break;
         case 2:
           arrayBehavior = new TableBehaviorUnicolor();
-          break;
-        case 3:
-          arrayBehavior = new TableBehaviorDarkSky();
-          break;
-        case 4:
-          arrayBehavior = new TableBehaviorSnake();
           break;
       }
       //Serial.println(freeRam());
@@ -108,7 +103,7 @@ void setup()
   Serial.begin(9600);
   randomSeed(analogRead(3));
   
-  arrayBehavior = new TableBehaviorRandomDotSoundTableBehaviorVUmeter();
+  arrayBehavior = new TableBehaviorDarkSky();
   arrayBehavior->leds = &leds;
   arrayBehavior->ledMatrix = &ledMatrix;
   arrayBehavior->doSetup();

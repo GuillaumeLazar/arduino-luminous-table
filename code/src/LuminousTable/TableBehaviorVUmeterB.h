@@ -2,7 +2,7 @@
 #define _TABLE_BEHAVIOR_VUMETERB_H_
 
 #include "AbstractTableBehavior.h"
-#include <QDebug>
+
 
 class TableBehaviorVUmeterB :
 public AbstractTableBehavior
